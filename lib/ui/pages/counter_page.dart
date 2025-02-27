@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
-class CounterPage extends StatelessWidget {
+class CounterPage extends StatefulWidget {
   const CounterPage({super.key});
+
+  @override
+  State<CounterPage> createState() => _CounterPageState();
+}
+
+class _CounterPageState extends State<CounterPage> {
+  int counter = 10;
 
   @override
   Widget build(BuildContext context) {
@@ -10,11 +17,18 @@ class CounterPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "Contador: 5",
+            "Contador: $counter",
             style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold),
           ),
 
-          TextButton(onPressed: () {}, child: Text("Incrementar")),
+          TextButton(
+            onPressed: () {
+              setState(() {
+                counter++;
+              });
+            },
+            child: Text("Incrementar"),
+          ),
         ],
       ),
     );

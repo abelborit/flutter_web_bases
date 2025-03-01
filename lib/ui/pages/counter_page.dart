@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_bases/ui/shared/custom_app_menu.dart';
 import 'package:flutter_web_bases/ui/shared/custom_flat_button.dart';
 
 class CounterPage extends StatefulWidget {
@@ -17,9 +18,20 @@ class _CounterPageState extends State<CounterPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            "Contador: $counter",
-            style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold),
+          CustomAppMenu(),
+
+          Spacer(), // widget usado para dar un espacio, el cual será el tamaño del espacio sobrante
+
+          FittedBox(
+            /* para que tome al tamaño automático según el tamaño del dispositivo */
+            fit: BoxFit.contain,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                "Contador: $counter",
+                style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold),
+              ),
+            ),
           ),
 
           Row(
@@ -50,6 +62,8 @@ class _CounterPageState extends State<CounterPage> {
               ),
             ],
           ),
+
+          Spacer(), // widget usado para dar un espacio, el cual será el tamaño del espacio sobrante
         ],
       ),
     );

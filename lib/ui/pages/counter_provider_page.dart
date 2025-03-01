@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_bases/ui/shared/custom_app_menu.dart';
 import 'package:flutter_web_bases/ui/shared/custom_flat_button.dart';
 
-class CounterPage extends StatefulWidget {
-  const CounterPage({super.key});
+class CounterProviderPage extends StatefulWidget {
+  const CounterProviderPage({super.key});
 
   @override
-  State<CounterPage> createState() => _CounterPageState();
+  State<CounterProviderPage> createState() => _CounterProviderPageState();
 }
 
-class _CounterPageState extends State<CounterPage> {
-  int counter = 10;
+class _CounterProviderPageState extends State<CounterProviderPage> {
+  int counter = 15;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class _CounterPageState extends State<CounterPage> {
 
           Spacer(), // widget usado para dar un espacio, el cual será el tamaño del espacio sobrante
 
-          Text("Contador Stateful", style: TextStyle(fontSize: 20)),
+          Text("Contador Provider", style: TextStyle(fontSize: 20)),
 
           FittedBox(
             /* para que tome al tamaño automático según el tamaño del dispositivo */

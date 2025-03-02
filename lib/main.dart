@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_bases/router/router_generator.dart';
+import 'package:flutter_web_bases/router/route_generator.dart';
 // import 'package:flutter_web_bases/ui/pages/counter_page.dart';
 // import 'package:flutter_web_bases/ui/pages/counter_provider_page.dart';
 

@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       /* aquí se está haciendo de forma separada en una función aparte pero es lo mismo, es decir, espera los mismos parámetros pero se está haciendo de esta forma para modularizar las cosas y tener todo más ordenado y hacer la separación de responsabilidades. Colocando esta generación de rutas entonces ya no es necesario colocar las rutas que estaban arriba */
       /* se puede colocar la función completa pero darse cuenta que como el parámetro que se envía es igual al argumento que se recibe entonces se puede obviar colocar eso y solo colocar la referencia de la función tal cual se haría en JavaScript usando React por ejemplo */
       // onGenerateRoute: (settings) => RouterGenerator.generateRoute(settings),
-      onGenerateRoute: RouterGenerator.generateRoute,
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }

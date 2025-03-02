@@ -5,7 +5,7 @@ import 'package:flutter_web_bases/ui/pages/page_404.dart';
 
 /* este archivo es una clase que va a trabajar de la creación de todas las rutas de manera automática de la aplicación */
 
-class RouterGenerator {
+class RouteGenerator {
   /* como no queremos estar creando nuevas instancias, lo vamos a estar trabajando todo de maneja estática */
   static Route<dynamic> generateRoute(RouteSettings settings) {
     /* si no se está usando el BuildContext context se puede usar como "_" para hacer referencia a que no se está usando */
@@ -13,7 +13,7 @@ class RouterGenerator {
     // return MaterialPageRoute(builder: (BuildContext context) => CounterPage());
     // return MaterialPageRoute(builder: (_) => CounterPage());
 
-    // print("***** RouterGenerator *****");
+    // print("***** RouteGenerator *****");
     // print(RouteSettings);
     // print(settings);
 

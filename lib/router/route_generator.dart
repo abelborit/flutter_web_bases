@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_web_bases/ui/pages/counter_page.dart';
-import 'package:flutter_web_bases/ui/pages/counter_provider_page.dart';
-import 'package:flutter_web_bases/ui/pages/page_404.dart';
+import 'package:flutter_web_bases/ui/views/counter_provider_view.dart';
+import 'package:flutter_web_bases/ui/views/counter_view.dart';
+import 'package:flutter_web_bases/ui/views/view_404.dart';
 
 /* para saber si se está en la web -> no usaremos todo el package, solo usaremos -- kIsWeb -- */
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -23,13 +23,13 @@ class RouteGenerator {
     /* en los settings.name están los nombres de las rutas que se quiere navegar */
     switch (settings.name) {
       case "/stateful":
-        return _fadeRoute(CounterPage(), "/stateful");
+        return _fadeRoute(CounterView(), "/stateful");
 
       case "/provider":
-        return _fadeRoute(CounterProviderPage(), "/provider");
+        return _fadeRoute(CounterProviderView(), "/provider");
 
       default:
-        return _fadeRoute(Page404(), "/page-not-found-404");
+        return _fadeRoute(View404(), "/page-not-found-404");
     }
   }
 

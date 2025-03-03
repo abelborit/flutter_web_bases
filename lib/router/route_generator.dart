@@ -1,7 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_web_bases/ui/pages/counter_page.dart';
 import 'package:flutter_web_bases/ui/pages/counter_provider_page.dart';
 import 'package:flutter_web_bases/ui/pages/page_404.dart';
+
+/* para saber si se está en la web -> no usaremos todo el package, solo usaremos -- kIsWeb -- */
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 /* este archivo es una clase que va a trabajar de la creación de todas las rutas de manera automática de la aplicación */
 
@@ -35,14 +38,21 @@ class RouteGenerator {
       settings: RouteSettings(name: routeName),
 
       /* aquí no se hará uso de lo que tiene el "pageBuilder", es decir, no se hará uso de "BuildContext, Animation<double>, Animation<double>" por eso se coloca como "_, __, ___". El child será el widget que se quiere renderizar */
-      pageBuilder: (_, __, ___) => child,
+      pageBuilder: (buildContext, animation, animationSecond) => child,
 
       transitionDuration: Duration(milliseconds: 100),
 
       /* este "transitionsBuilder" es quien se encarga de realizar el efecto, velocidad y duración de la transición, en este caso será un efecto de Fade */
       transitionsBuilder:
-          (_, animation, __, ___) =>
-              FadeTransition(opacity: animation, child: child),
+          (buildContext, animation, animationSecond, widget) =>
+              (kIsWeb)
+                  ? FadeTransition(opacity: animation, child: child)
+                  : CupertinoPageTransition(
+                    primaryRouteAnimation: animation,
+                    secondaryRouteAnimation: animationSecond,
+                    linearTransition: true,
+                    child: child,
+                  ),
 
       /* si no se quiere colocar con una animación entonces se coloca directo el child o widget que se va a utilizar */
       // transitionsBuilder: (_, animation, __, ___) => child,

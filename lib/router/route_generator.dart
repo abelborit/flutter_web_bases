@@ -20,13 +20,23 @@ class RouteGenerator {
     /* en los settings.name están los nombres de las rutas que se quiere navegar */
     switch (settings.name) {
       case "/stateful":
-        return MaterialPageRoute(builder: (_) => CounterPage());
+        return MaterialPageRoute(
+          /* para no perder la url como tal */
+          settings: RouteSettings(name: "/stateful"),
+          builder: (_) => CounterPage(),
+        );
 
       case "/provider":
-        return MaterialPageRoute(builder: (_) => CounterProviderPage());
+        return MaterialPageRoute(
+          settings: RouteSettings(name: "/provider"),
+          builder: (_) => CounterProviderPage(),
+        );
 
       default:
-        return MaterialPageRoute(builder: (_) => Page404());
+        return MaterialPageRoute(
+          settings: RouteSettings(name: "/page-not-found-404"),
+          builder: (_) => Page404(),
+        );
     }
   }
 }

@@ -20,23 +20,32 @@ class RouteGenerator {
     /* en los settings.name están los nombres de las rutas que se quiere navegar */
     switch (settings.name) {
       case "/stateful":
-        return MaterialPageRoute(
-          /* para no perder la url como tal */
-          settings: RouteSettings(name: "/stateful"),
-          builder: (_) => CounterPage(),
-        );
+        return _fadeRoute(CounterPage(), "/stateful");
 
       case "/provider":
-        return MaterialPageRoute(
-          settings: RouteSettings(name: "/provider"),
-          builder: (_) => CounterProviderPage(),
-        );
+        return _fadeRoute(CounterProviderPage(), "/provider");
 
       default:
-        return MaterialPageRoute(
-          settings: RouteSettings(name: "/page-not-found-404"),
-          builder: (_) => Page404(),
-        );
+        return _fadeRoute(Page404(), "/page-not-found-404");
     }
+  }
+
+  static PageRoute _fadeRoute(Widget child, String routeName) {
+    return PageRouteBuilder(
+      settings: RouteSettings(name: routeName),
+
+      /* aquí no se hará uso de lo que tiene el "pageBuilder", es decir, no se hará uso de "BuildContext, Animation<double>, Animation<double>" por eso se coloca como "_, __, ___". El child será el widget que se quiere renderizar */
+      pageBuilder: (_, __, ___) => child,
+
+      transitionDuration: Duration(milliseconds: 100),
+
+      /* este "transitionsBuilder" es quien se encarga de realizar el efecto, velocidad y duración de la transición, en este caso será un efecto de Fade */
+      transitionsBuilder:
+          (_, animation, __, ___) =>
+              FadeTransition(opacity: animation, child: child),
+
+      /* si no se quiere colocar con una animación entonces se coloca directo el child o widget que se va a utilizar */
+      // transitionsBuilder: (_, animation, __, ___) => child,
+    );
   }
 }

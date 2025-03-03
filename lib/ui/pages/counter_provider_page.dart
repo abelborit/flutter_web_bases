@@ -2,15 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_bases/ui/shared/custom_app_menu.dart';
 import 'package:flutter_web_bases/ui/shared/custom_flat_button.dart';
 
-class CounterProviderPage extends StatefulWidget {
+/* cuando se trabaja con un provider o algún gestor de estado, usualmente no hace falta que sea un "StatefulWidget" porque con se un solo "StatelessWidget" nos va a funcionar */
+class CounterProviderPage extends StatelessWidget {
   const CounterProviderPage({super.key});
-
-  @override
-  State<CounterProviderPage> createState() => _CounterProviderPageState();
-}
-
-class _CounterProviderPageState extends State<CounterProviderPage> {
-  int counter = 15;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +24,7 @@ class _CounterProviderPageState extends State<CounterProviderPage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                "Contador: $counter",
+                "Contador: XXX",
                 style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold),
               ),
             ),
@@ -42,7 +36,7 @@ class _CounterProviderPageState extends State<CounterProviderPage> {
               CustomFlatButton(
                 text: "Incrementar",
                 /* FORMA 1 */
-                onPressed: () => setState(() => counter++),
+                onPressed: () {},
                 /* FORMA 2 */
                 // onPressed: () {
                 //   setState(() {
@@ -54,7 +48,7 @@ class _CounterProviderPageState extends State<CounterProviderPage> {
                 text: "Decrementar",
                 color: Colors.red,
                 /* FORMA 1 */
-                onPressed: () => setState(() => counter--),
+                onPressed: () {},
                 /* FORMA 2 */
                 // onPressed: () {
                 //   setState(() {

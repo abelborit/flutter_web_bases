@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-/* esto lo tendríamos que manejar como si fuera un singleton para que en todo lado de mi aplicación se tenga acceso a la misma instancia porque si se crea una nueva instancia de este "NavegationService" creará un nuevo "navigatorKey" entonces no va a poder apuntar al que nosotros queremos o establecimos */
-/* estamos haciendo privada esta clase con el "_" al inicio del nombre */
-class _NavegationService {
+/* aquí lo estábamos trabajando de forma privada y como si fuera un singleton que se encuentra de manera global en la aplicación el cual sería dificil de probar si quisiéramos hacer pruebas sobre esta clase, entonces vamos a cambiar cómo lo estamos trabajando. Usaremos https://pub.dev/packages/get_it que es un paquete que sirve como para hacer inyección de dependencias que es algo muy parecido a como lo hace el paquete "provider" solo que lo hace sin ningún tipo de boilerplate o sin código extra, solo se inyecta y se usa, "get_it" no redibuja widgets, no es un gestor de estados propiamente a menos que nosotros lo utilizáramos para eso */
+class NavegationService {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   Future navigationTo(String routeName) {
@@ -15,6 +14,3 @@ class _NavegationService {
     return navigatorKey.currentState!.pop(); // para regresar a la ruta anterior
   }
 }
-
-/* crear una nueva y única instancia de "_NavegationService" porque será el único objeto que se está exportando ya que como "_NavegationService" es privado entonces solo funciona en este archivo. NOTA: ahora no es necesario agregar el "new" como antes de "new _NavegationService()" */
-final navegationService = _NavegationService();

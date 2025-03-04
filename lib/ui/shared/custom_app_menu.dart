@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_bases/locator.dart';
 import 'package:flutter_web_bases/services/navegation_service.dart';
 import 'package:flutter_web_bases/ui/shared/custom_flat_button.dart';
 
@@ -20,7 +21,8 @@ class CustomAppMenu extends StatelessWidget {
             /* FORMA 1: forma tradicional */
             // onPressed: () => Navigator.pushNamed(context, "/stateful"),
             /* FORMA 2: usando el navigatorKey */
-            onPressed: () => navegationService.navigationTo("/stateful"),
+            onPressed:
+                () => locator<NavegationService>().navigationTo("/stateful"),
             color: Colors.black,
           ),
 
@@ -30,7 +32,8 @@ class CustomAppMenu extends StatelessWidget {
             /* FORMA 1: forma tradicional */
             // onPressed: () => Navigator.pushNamed(context, "/provider"),
             /* FORMA 2: usando el navigatorKey */
-            onPressed: () => navegationService.navigationTo("/provider"),
+            onPressed:
+                () => locator<NavegationService>().navigationTo("/provider"),
             color: Colors.black,
           ),
 
@@ -41,7 +44,9 @@ class CustomAppMenu extends StatelessWidget {
             // onPressed: () => Navigator.pushNamed(context, "/pagina-no-existe"),
             /* FORMA 2: usando el navigatorKey */
             onPressed:
-                () => navegationService.navigationTo("/pagina-no-existe"),
+                () => locator<NavegationService>().navigationTo(
+                  "/pagina-no-existe",
+                ),
             color: Colors.black,
           ),
         ],

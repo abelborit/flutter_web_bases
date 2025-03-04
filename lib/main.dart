@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_bases/locator.dart';
 import 'package:flutter_web_bases/router/route_generator.dart';
 import 'package:flutter_web_bases/services/navegation_service.dart';
 import 'package:flutter_web_bases/ui/layout/main_layout_page.dart';
 // import 'package:flutter_web_bases/ui/pages/counter_page.dart';
 // import 'package:flutter_web_bases/ui/pages/counter_provider_page.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  /* una vez inicializado este "setupLocator" ya se tiene acceso a lo que sea que el "setupLocator" nos esté ofreciendo */
+  setupLocator();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -33,8 +38,9 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: RouteGenerator.generateRoute,
 
       /* estamos utilizando un sistema para generar las rutas, es decir, tenemos la forma en cómo manejar el estado de nuestra navegación, pero para manejar ese estado de la navegación tenemos que hacer referencia al estado de navegación que ya se creó, es decir, tenemos una única instancia de nuestra navegación y tendremos que poner el key para el "navigatorKey" y con ese "navigatorKey" es con quien se hará la navegación porque es quien mantiene la referencia a la navegación que el "builder" está creando */
-      /* cuando se hace el "Navigator.pushNamed(.....)" en teoría es buscar la referencia al "navigatorKey" y este es quien controla las rutas para poder navegar, etc. y para eso tenemos que especificarlo  */
-      navigatorKey: navegationService.navigatorKey,
+      /* cuando se hace el "Navigator.pushNamed(.....)" en teoría es buscar la referencia al "navigatorKey" y este es quien controla las rutas para poder navegar, etc. y para eso tenemos que especificarlo */
+      /* aquí se está haciendo que el "locator<instancia_a_buscar>()" y luego de tener la instancia entonces se utiliza la propiedad "navigatorKey" */
+      navigatorKey: locator<NavegationService>().navigatorKey,
 
       /* el "builder" es quien va a construir la ruta prácticamente, si no se coloca entonces por defecto trabaja con la ruta que genera en "onGenerateRoute: RouteGenerator.generateRoute," pero si se coloca explícitamente entonces el producto o lo que resulta de "onGenerateRoute: RouteGenerator.generateRoute," se le va a enviar al "builder" */
       builder: (buildContext, child) {

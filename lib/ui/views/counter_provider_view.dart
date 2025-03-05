@@ -5,12 +5,14 @@ import 'package:provider/provider.dart';
 
 /* cuando se trabaja con un provider o algún gestor de estado, usualmente no hace falta que sea un "StatefulWidget" porque con se un solo "StatelessWidget" nos va a funcionar */
 class CounterProviderView extends StatelessWidget {
-  const CounterProviderView({super.key});
+  final String baseCounter;
+
+  const CounterProviderView({super.key, required this.baseCounter});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (BuildContext context) => CounterProvider(),
+      create: (BuildContext context) => CounterProvider(baseCounter),
       child: _CounterProviderPageBody(),
     );
   }

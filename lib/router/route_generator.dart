@@ -23,10 +23,10 @@ class RouteGenerator {
     /* en los settings.name están los nombres de las rutas que se quiere navegar */
     switch (settings.name) {
       case "/stateful":
-        return _fadeRoute(CounterView(), "/stateful");
+        return _fadeRoute(CounterView(baseCounter: "5",), "/stateful");
 
       case "/provider":
-        return _fadeRoute(CounterProviderView(), "/provider");
+        return _fadeRoute(CounterProviderView(baseCounter: "5",), "/provider");
 
       default:
         return _fadeRoute(View404(), "/page-not-found-404");
